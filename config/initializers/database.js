@@ -23,6 +23,5 @@ module.exports = function(cb) {
     // Return the call back
     cb(null, db);
     logger.info('[SERVER] Database connection ready');
-    //console.log(db);
   });
 };

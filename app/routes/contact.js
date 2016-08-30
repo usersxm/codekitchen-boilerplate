@@ -1,4 +1,4 @@
-// app/routes/users.js
+// app/routes/contact.js
 var db = require('../../config/initializers/database');
 
 module.exports = function(router) {
