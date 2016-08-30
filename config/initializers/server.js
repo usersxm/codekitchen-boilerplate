@@ -14,7 +14,7 @@ var app;
 
 var start =  function(cb) {
   'use strict';
-  // Configure express 
+  // Configure express
   app = express();
 
   app.use(morgan('common'));
@@ -24,8 +24,7 @@ var start =  function(cb) {
   logger.info('[SERVER] Initializing routes');
   require('../../app/routes/index')(app);
 
-  app.use(express.static(path.join(__dirname, 'public')));
-
+  app.use(express.static(path.join(__dirname, '../../app/public')));
   // Error handler
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
@@ -38,11 +37,10 @@ var start =  function(cb) {
 
   app.listen(config.get('NODE_PORT'));
   logger.info('[SERVER] Listening on port ' + config.get('NODE_PORT'));
-  
+
   if (cb) {
     return cb();
   }
 };
 
 module.exports = start;
-
