@@ -8,9 +8,9 @@ Find details here: http://www.codekitchen.ca/guide-to-structuring-and-building-a
 
 
     [nodemon] 1.10.2
-    [nodemon] to restart at any time, enter `rs`
+    [nodemon] to restart at any time, enter 'rs'
     [nodemon] watching: *.*
-    [nodemon] starting `node index.js`
+    [nodemon] starting 'node index.js'
     info: [APP] Starting server initialization
     info: [SERVER] Initializing routes
     info: [SERVER] Listening on port 4000

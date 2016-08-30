@@ -16,15 +16,15 @@ var start =  function(cb) {
   'use strict';
   // Configure express
   app = express();
-  app.locals.db = cb;
+
   app.use(morgan('common'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json({type: '*/*'}));
+  app.use(express.static(path.join(__dirname, '../../public')));
 
   logger.info('[SERVER] Initializing routes');
   require('../../app/routes/index')(app);
 
-  app.use(express.static(path.join(__dirname, '../../app/public')));
   // Error handler
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);

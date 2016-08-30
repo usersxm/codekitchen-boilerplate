@@ -10,20 +10,19 @@ module.exports = function(cb) {
 
   var CONTACTS_COLLECTION = "contacts";
   var db;
-  var mongoUri = process.env.MONGODB_URI || "mongodb://carlos:asd123456@ds013366.mlab.com:13366/restapi"
+  var mongoUri = process.env.MONGODB_URI;
 
   // Connect to the database before starting the application server.
   mongodb.MongoClient.connect(mongoUri, function (err, database) {
     if (err) {
-      console.log(err);
+      logger.info(err);
       process.exit(1);
     }
-
     // Save database object from the callback for reuse.
     db = database;
-    //cb(null, db);
+    // Return the call back
+    cb(null, db);
     logger.info('[SERVER] Database connection ready');
+    //console.log(db);
   });
-  // Return the call back
-  cb(null, db);
 };
