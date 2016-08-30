@@ -21,8 +21,9 @@ module.exports = function(cb) {
 
     // Save database object from the callback for reuse.
     db = database;
+    //cb(null, db);
     logger.info('[SERVER] Database connection ready');
   });
   // Return the call back
-  cb();
+  cb(null, db);
 };

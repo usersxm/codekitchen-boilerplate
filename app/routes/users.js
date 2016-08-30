@@ -1,18 +1,19 @@
 // app/routes/users.js
-var db = require('../../config/initializers/database.js') 
+var db = require('../../config/initializers/database.js')
 module.exports = function(router) {
   'use strict';
   // This will handle the url calls for /users/:user_id
 
   router.route('/:id')
   .get(function(req, res, next) {
-    db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+    app.locals.db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
       if (err) {
-        handleError(res, err.message, "Failed to get contact");
+        next(err);
       } else {
         res.status(200).json(doc);
       }
     });
+    next();
   })
   .put(function(req, res, next) {
     // Update user
@@ -26,13 +27,14 @@ module.exports = function(router) {
 
   router.route('/')
   .get(function(req, res, next) {
-    db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
+    app.locals.db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
       if (err) {
-        handleError(res, err.message, "Failed to get contacts.");
+        next(err);
       } else {
         res.status(200).json(docs);
       }
     });
+    next();
   })
   .post(function(req, res, next) {
     // Create new user

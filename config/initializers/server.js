@@ -16,7 +16,7 @@ var start =  function(cb) {
   'use strict';
   // Configure express
   app = express();
-
+  app.locals.db = cb;
   app.use(morgan('common'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json({type: '*/*'}));
