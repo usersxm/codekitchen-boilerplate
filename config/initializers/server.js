@@ -4,7 +4,6 @@ var express = require('express');
 var path = require('path');
 // Local dependecies
 var config = require('nconf');
-
 // create the express app
 // configure middlewares
 var bodyParser = require('body-parser');
@@ -12,11 +11,13 @@ var morgan = require('morgan');
 var logger = require('winston');
 var app;
 
-var start =  function(cb) {
+var start =  function(db, cb) {
   'use strict';
   // Configure express
   app = express();
-
+    app.use(function(req, res, next) {
+        app.locals.db = db;
+    });
   app.use(morgan('common'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json({type: '*/*'}));
@@ -41,6 +42,11 @@ var start =  function(cb) {
   if (cb) {
     return cb();
   }
+  // app.locals.db = function(err, db) {
+  //   if (err) {
+  //     logger.info('No me toma la cajetuda base de datos');
+  //   }
+  // }
 };
 
 module.exports = start;

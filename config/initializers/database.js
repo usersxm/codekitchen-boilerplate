@@ -1,5 +1,7 @@
 // config/initializers/database.js
 var logger = require('winston');
+// Local dependecies
+var config = require('nconf');
 
 module.exports = function(cb) {
   'use strict';
@@ -10,7 +12,7 @@ module.exports = function(cb) {
 
   var CONTACTS_COLLECTION = "contacts";
   var db;
-  var mongoUri = process.env.MONGODB_URI;
+  var mongoUri = config.get('MONGODB_URI');
 
   // Connect to the database before starting the application server.
   mongodb.MongoClient.connect(mongoUri, function (err, database) {
