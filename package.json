@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tolgaek/express-restful-api.git"
+    "url": "https://github.com/usersxm/codekitchen-boilerplate.git"
   },
-  "author": "Tolga Ekmen <tolga.ekmen@gmail.com> (https://github.com/tolgaek)",
+  "author": "Carlos Piasentini (https://github.com/usersxm)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tolgaek/express-restful-api/issues"
+    "url": "https://github.com/usersxm/codekitchen-boilerplate/issues"
   },
-  "homepage": "https://github.com/tolgaek/express-restful-api",
+  "homepage": "https://github.com/usersxm/codekitchen-boilerplate",
   "dependencies": {
     "async": "^1.2.1",
     "body-parser": "^1.13.1",
