@@ -13,7 +13,6 @@ module.exports = function(cb) {
   var CONTACTS_COLLECTION = "contacts";
   var db;
   var mongoUri = config.get('MONGODB_URI');
-
   // Connect to the database before starting the application server.
   mongodb.MongoClient.connect(mongoUri, function (err, database) {
     if (err) {

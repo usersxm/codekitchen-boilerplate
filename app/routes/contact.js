@@ -1,12 +1,12 @@
 // app/routes/contact.js
-//var db = require('../../config/initializers/database');
+var mongodb = require("mongodb");
 
 module.exports = function(router) {
   'use strict';
   // This will handle the url calls for /users/:user_id
   router.route('/:id')
   .get(function(req, res, next) {
-    req.app.locals.db.collection(CONTACTS_COLLECTION).findOne({ _id: new ObjectID(req.params.id) }, function(err, doc) {
+    req.app.locals.db.collection('contacts').findOne({ _id: new mongodb.ObjectID(req.params.id) }, function(err, doc) {
       if (err) {
         next(err);
       } else {
@@ -26,8 +26,7 @@ module.exports = function(router) {
 
   router.route('/')
   .get(function(req, res, next) {
-    console.log('asd');
-    req.app.locals.db.collection(CONTACTS_COLLECTION).find({}).toArray(function(err, docs) {
+    req.app.locals.db.collection('contacts').find({}).toArray(function(err, docs) {
       if (err) {
         next(err);
       } else {
